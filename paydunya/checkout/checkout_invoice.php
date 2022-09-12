@@ -140,7 +140,7 @@ class Paydunya_Checkout_Invoice extends Paydunya_Checkout {
     }
 
     $result = Paydunya_Utilities::httpGetRequest(Paydunya_Setup::getCheckoutConfirmUrl().$token);
-    if(count($result) > 0) {
+    if(count($result) > 0 && array_key_exists('status', $result)) {
       switch ($result['status']) {
         case 'completed':
           $this->status = $result['status'];
